@@ -1,10 +1,12 @@
 body {
   font-family: Verdana, Arial, sans-serif;
 }
-td {
-  padding: 6px;
-  border-bottom: 1px;
-  border-bottom-color: gray;
+table {
+  border-collapse: collapse;
+  font-size: 16px;
+  text-align: left;
+  table-layout: fixed;
+  width: 100%;
 }
 th {
   background-color: #b7d0ff;
@@ -13,8 +15,18 @@ th {
   border-bottom: 2px;
   border-bottom-color: gray;
 }
-table {
-  border-collapse: collapse;
-  font-size: 16px;
-  text-align: left;
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(odd){background-color: #ffffff}
+
+td {
+  padding: 6px;
+  border-bottom: 1px;
+  border-bottom-color: gray;
+}
+.center {
+  margin: auto;
+  padding: 60px;
+  width: 60%;
+
 }

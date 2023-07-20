@@ -1,4 +1,5 @@
 const tableBody = document.getElementById("table-body");
+const tableHeader = document.getElementById("table-header")
 
 async function getTable() {
   const url =
@@ -6,6 +7,10 @@ async function getTable() {
   const tablePromise = await fetch(url);
   const tableJson = await tablePromise.json();
   let labels = Object.values(tableJson.dataset.dimension.Alue.category.label);
+
+  // set header to the text from database
+  console.log(tableJson.dataset);
+  tableHeader.innerText = tableJson.dataset.label;
 
   // now that i found the object.values u could use forEach but this already works
   for (let i = 0; i < tableJson.dataset.value.length; i++) {
