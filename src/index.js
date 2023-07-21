@@ -19,7 +19,11 @@ async function getTable() {
   for (let i = 0; i < tableJson.dataset.value.length; i++) {
     let tr = document.createElement("tr");
     let td1 = document.createElement("td");
+    td1.style.padding = "6px";
+    td1.style.borderBottom = "1px solid gray";
     let td2 = document.createElement("td");
+    td2.style.padding = "6px";
+    td2.style.borderBottom = "1px solid gray";
 
     td1.innerText = labels[i];
     td2.innerText = tableJson.dataset.value[i];
@@ -39,12 +43,48 @@ async function addEmployees() {
 
   Array.from(tableBody.children).forEach((row)=> {
     let td = document.createElement("td");
+    td.style.padding = "6px";
+    td.style.borderBottom = "1px solid gray";
 
     td.innerText = employees.value[i]
+    row.appendChild(td)
+
     i++;
+  })
+}
+
+function addPercentage() {
+  Array.from(tableBody.children).forEach((row)=> {
+    let td = document.createElement("td");
+    td.style.padding = "6px";
+    td.style.borderBottom = "1px solid gray";
+
+    let percentage = (row.children[2].innerText/row.children[1].innerText)*100
+
+    td.innerText = percentage.toFixed(2)+"%"
+
+    if (percentage > 45) {
+      td.style.backgroundColor = "#abffbd";
+    } else if (percentage < 25) {
+      td.style.backgroundColor = "#ff9e9e";
+    }
+
     row.appendChild(td)
   })
 }
 
-getTable();
-addEmployees();
+
+async function main() {
+  try {
+	await getTable();
+	await addEmployees();
+	addPercentage()
+
+  }catch(error) {
+  	console.log("Error:" + error.message);
+  }
+}
+
+main();
+
+
