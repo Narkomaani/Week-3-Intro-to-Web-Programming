@@ -64,9 +64,9 @@ function addPercentage() {
     td.innerText = percentage.toFixed(2)+"%"
 
     if (percentage > 45) {
-      td.style.backgroundColor = "#abffbd";
+      row.style.backgroundColor = "#abffbd";
     } else if (percentage < 25) {
-      td.style.backgroundColor = "#ff9e9e";
+      row.style.backgroundColor = "#ff9e9e";
     }
 
     row.appendChild(td)
